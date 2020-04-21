@@ -1,0 +1,23 @@
+
+@startuml Ejercicio1
+
+skinparam packageStyle rectangle
+actor socio
+actor cliente
+actor fabrica
+fabrica ..> socio : include
+rectangle venta{
+    (Productos) -- socio : retira
+    socio -- (beneficios) : obtienen
+    (venta producto) --- socio
+    (venta producto) <... (en tienda propia) : extends
+    (venta producto) <... (a un socio) : extends
+    (venta producto) <... (en tienda de fabrica) : extends
+    (venta producto) <... (app web) : extends
+    (beneficios) <. (venta producto) : include
+    fabrica -- (Productos) : elabora
+    cliente -- (app web) : consultar
+    cliente -- (compra producto) 
+    (compra producto) -- (venta producto)
+}
+@enduml
